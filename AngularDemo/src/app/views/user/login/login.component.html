@@ -1,0 +1,45 @@
+
+<simple-notifications></simple-notifications>
+<ngx-spinner></ngx-spinner>
+
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    <p class=" text-white h2">Welcome</p>
+    <p class="white mb-0">
+      Please use your credentials to login.
+    </p>
+  </div>
+  <div class="form-side">
+    <div class="" align="center">
+      <img src="assets/logos/white.png" style="width: 50%;">
+      <br/>
+      <br/>
+      <br/>
+      <h6 class="mb-4"><span style="font-family: 'IM Fell Double Pica', serif;font-size: 1.1rem">Login</span></h6>
+      <br/>
+    </div>
+
+    <form #loginForm="ngForm" novalidate (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control" required  ngModel #email="ngModel" name="username" [(ngModel)]="userNameModel" />
+        <span>{{ 'user.username' | translate }}</span>
+        <div *ngIf="!email.valid && loginForm.submitted" class="invalid-tooltip">username is required!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password"
+          [(ngModel)]="passwordModel" />
+        <span>{{ 'user.password' | translate }}</span>
+        <div *ngIf="!password.valid && loginForm.submitted" class="invalid-tooltip">Password is required!</div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <a>                                     </a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          {{ 'user.login-button' | translate | uppercase }}
+        </app-state-button>
+      </div>
+    </form>
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>

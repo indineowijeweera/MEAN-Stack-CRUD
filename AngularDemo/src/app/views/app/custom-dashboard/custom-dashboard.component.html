@@ -1,0 +1,815 @@
+<div class="row ">
+  <div class="col-12 col-md-12">
+    <app-heading></app-heading>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="separator mb-5"></div>
+  </div>
+</div>
+
+<simple-notifications></simple-notifications>
+<ngx-spinner></ngx-spinner>
+
+<div class="row">
+  <div class="col-xl-3 col-lg-6 mb-4">
+    <div class="card">
+    <div (click)="routedTo('allListings','UnderReview')" class="card-body cursor-pointer d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0">Under Review ({{underReview.allCount}})</h5>
+      <div class="progress-bar-circle position-relative">
+        <div class="progressbar-text">{{underReview.percentage}}%</div>
+        <round-progress [current]="underReview.percentage" [max]="100" [responsive]="true" [duration]="800"
+                        [animation]="'easeInOutQuart'" [animationDelay]="0" [radius]="50" [rounded]="true" [stroke]="4">
+        </round-progress>
+      </div>
+    </div>
+      <div class="card-footer ">
+        <div class="col-md-12 ">
+          <div class="form-group row mb-0" (click)="routedTo('property','UnderReview')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Places :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{underReview.places}}</span>
+            </div>
+          </div>
+          <div class=" form-group row mb-0" (click)="routedTo('vehicle','UnderReview')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Rides :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{underReview.rides}}</span>
+            </div>
+          </div>
+          <div class="form-group row mb-0" (click)="routedTo('thing','UnderReview')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Things :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{underReview.things}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 mb-4">
+    <div class="card">
+    <div (click)="routedTo('allListings','Approved')" class=" cursor-pointer card-body d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0">Approved ({{approved.allCount}})</h5>
+      <div class="progress-bar-circle position-relative">
+        <div class="progressbar-text">{{approved.percentage}}%</div>
+        <round-progress [current]="approved.percentage" [max]="100" [responsive]="true" [duration]="800"
+                        [animation]="'easeInOutQuart'" [animationDelay]="0" [radius]="50" [rounded]="true" [stroke]="4">
+        </round-progress>
+      </div>
+    </div>
+      <div class="card-footer ">
+        <div class="col-md-12 ">
+          <div class="form-group row mb-0" (click)="routedTo('property','Approved')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Places :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{approved.places}}</span>
+            </div>
+          </div>
+          <div class=" form-group row mb-0" (click)="routedTo('vehicle','Approved')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Rides :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{approved.rides}}</span>
+            </div>
+          </div>
+          <div class="form-group row mb-0" (click)="routedTo('thing','Approved')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Things :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{approved.things}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 mb-4">
+    <div class="card">
+    <div (click)="routedTo('allListings','Suspended')" class=" cursor-pointer card-body d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0">Suspended ({{suspended.allCount}})</h5>
+      <div class="progress-bar-circle position-relative">
+        <div class="progressbar-text">{{suspended.percentage}}%</div>
+        <round-progress [current]="suspended.percentage" [max]="100" [responsive]="true" [duration]="800"
+                        [animation]="'easeInOutQuart'" [animationDelay]="0" [radius]="50" [rounded]="true" [stroke]="4">
+        </round-progress>
+      </div>
+    </div>
+      <div class="card-footer ">
+        <div class="col-md-12 ">
+          <div class="form-group row mb-0" (click)="routedTo('property','Suspended')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Places :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{suspended.places}}</span>
+            </div>
+          </div>
+          <div class=" form-group row mb-0" (click)="routedTo('vehicle','Suspended')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Rides :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{suspended.rides}}</span>
+            </div>
+          </div>
+          <div class="form-group row mb-0" (click)="routedTo('thing','Suspended')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Things :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{suspended.things}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 mb-4">
+    <div class="card">
+    <div (click)="routedTo('allListings','Rejected')" class=" cursor-pointer card-body d-flex justify-content-between align-items-center">
+      <h5 class="card-title mb-0">Rejected ({{rejected.allCount}})</h5>
+      <div class="progress-bar-circle position-relative">
+        <div class="progressbar-text">{{rejected.percentage}}%</div>
+        <round-progress [current]="rejected.percentage" [max]="100" [responsive]="true" [duration]="800"
+                        [animation]="'easeInOutQuart'" [animationDelay]="0" [radius]="50" [rounded]="true" [stroke]="4">
+        </round-progress>
+      </div>
+    </div>
+      <div class="card-footer ">
+        <div class="col-md-12 ">
+          <div class="form-group row mb-0" (click)="routedTo('property','Rejected')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Places :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{rejected.places}}</span>
+            </div>
+          </div>
+          <div class=" form-group row mb-0" (click)="routedTo('vehicle','Rejected')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Rides :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{rejected.rides}}</span>
+            </div>
+          </div>
+          <div class="form-group row mb-0" (click)="routedTo('thing','Rejected')">
+            <div class="col-md-8 ">
+              <label class="font-weight-bold cursor-pointer">Things :</label>
+            </div>
+            <div class="col-md-4">
+              <span class="cursor-pointer">{{rejected.things}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-12 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Categories</h5>
+<!--        <div class="chart-container">-->
+<!--          <app-polar-chart [shadow]="true" [class]="chartClass" [options]="chartDataConfig.polarAreaChartOptions"-->
+<!--                           [data]="polarAreaChartData"></app-polar-chart>-->
+<!--        </div>-->
+        <div style="display: block;">
+          <canvas baseChart
+                  [data]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [chartType]="pieChartType"
+                  [options]="pieChartOptions"
+                  [plugins]="pieChartPlugins"
+                  [colors]="pieColors"
+                  [legend]="pieChartLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>  </div>
+  <div class="col-lg-6 col-md-12 mb-4">
+    <div class="card">
+      <div class="position-absolute card-top-buttons">
+        <button class="btn btn-header-light icon-button" (click)="refreshLog()">
+          <i class="simple-icon-refresh"></i>
+        </button>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Logs</h5>
+        <div class="dashboard-logs">
+          <perfect-scrollbar class="scroll" [config]="{suppressScrollX: true, wheelPropagation: false}">
+            <table class="table table-sm table-borderless">
+              <tbody>
+              <tr *ngFor="let log of activityLogs">
+                <td>
+                  <span [class]="'log-indicator align-middle '+ log.color"></span>
+                </td>
+                <td>
+<!--                  <span class="font-weight-medium">{{log.module}} {{log.status}}</span>-->
+                  <span *ngIf="log.listingId && log.user" class="font-weight-medium"><a class="cursor-pointer blue-underline-link" target="_blank" href="#" data-toggle="tooltip" title="Click To Details" data-placement="right" [routerLink]="['/app/users/userNotificationLogs/' + log.user.firebaseId+'/'+ log.user._id]">{{log.user.userName}}</a>  {{log.status}} {{log.module}} <a class="cursor-pointer blue-underline-link" target="_blank" href="#" data-toggle="tooltip" title="Click To Details" data-placement="right" [routerLink]="['/app/listings/listingDetail/' + log.listingId._id]">{{log.listingId.title}}</a></span>
+                  <span *ngIf="!log.listingId && log.user" class="font-weight-medium">{{log.status}} {{log.module}} <a class="cursor-pointer blue-underline-link" target="_blank" href="#" data-toggle="tooltip" title="Click To Details" data-placement="right" [routerLink]="['/app/users/userNotificationLogs/' + log.user.firebaseId+'/'+ log.user._id]">{{log.user.userName}}</a></span>
+                </td>
+                <td class="text-right"><span class="text-muted">{{log.createdAt | date:'MM/dd/yyyy h:mm a'}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="row">-->
+<!--  <div class="col-lg-12 col-md-12 mb-4">-->
+<!--  <div class="card">-->
+<!--    <div class="card-body">-->
+<!--      <h5 class="card-title">Ads</h5>-->
+<!--        <div style="display: block;">-->
+<!--          <canvas baseChart style="height: 283px !important;"-->
+<!--                  [datasets]="lineChartData"-->
+<!--                  [labels]="lineChartLabels"-->
+<!--                  [options]="lineChartOptions"-->
+<!--                  [colors]="lineChartColors"-->
+<!--                  [legend]="lineChartLegend"-->
+<!--                  [chartType]="lineChartType"-->
+<!--                  [plugins]="lineChartPlugins">-->
+<!--          </canvas>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div class="row ">
+  <div class="col-lg-12 col-md-12 mb-4">
+    <div class="card">
+      <form class="form" novalidate>
+        <div class="card-body">
+          <div class="row ">
+            <div class="col-md-12">
+              <div class="row ">
+                <div class="col-md-7">
+                  <label class="form-group has-float-label">
+                    <div class="position-relative has-icon-left">
+                      <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-sm"
+                               name="search_value" [(ngModel)]="searchValue">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary default " type="submit" (click)="searchTable()"><i
+                            class=" glyph-icon simple-icon-magnifier text-white mt-2 pt-2"></i></button>
+                          <button class="btn  btn-light btn-sm  " (click)="clear()">Clear</button>
+                        </div>
+                      </div>
+                    </div>
+                    <span>Search Ad</span>
+                  </label>
+                </div>
+                <div class="col-md-3  doNotPrint">
+                  <div class="row pull-right">
+                    <div class="form-group  pull-right mr-2">
+                      <h4>Latest Ads</h4>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 float-right">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="table-responsive mt-3">
+                <table class="table table-striped">
+                  <thead class="th-b-color">
+                  <tr>
+                    <th scope="col" class="text-left">Ad Type</th>
+                    <th scope="col" class="text-left">Image</th>
+                    <th scope="col" class="text-left">Name</th>
+                    <th scope="col" class="text-left">Category</th>
+                    <th scope="col" class="text-left">Owner Name</th>
+                    <th scope="col" class="text-left">Contact Number</th>
+                    <th scope="col" class="text-left">Created Date</th>
+                    <th scope="col" class="text-left">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let listing of listings; let key = index">
+                    <td class="text-left">{{listing.__typeOfListing}}</td>
+                    <td class="text-left">
+                      <img *ngIf="listing.userStatus!='Archived'" src={{listing.imageUrls[0]}} width="100px" height="100px"
+                           class="img-responsive img-rounded">
+                      <div *ngIf="listing.userStatus=='Archived'" class="item">
+                        <a href="#">
+                          <span class="notify-badge">Archived</span>
+                          <img src={{listing.imageUrls[0]}} width="100px" height="100px"  alt="" />
+                        </a>
+                      </div>
+                    </td>
+                    <td class="text-left">{{listing.title}}</td>
+                    <td class="text-left"><span *ngFor="let category of listing.category"
+                                                class="badge badge-warning mr-2 mt-2">{{category.name}}</span></td>
+                    <td class="text-left" *ngIf="listing.user">{{listing.user.userName}}</td>
+                    <td class="text-left" *ngIf="!listing.user">Guest</td>
+                    <td class="text-left"
+                        *ngIf="listing.contactNumber.length>0">{{listing.contactNumber[0].contactNumber}}</td>
+                    <td class="text-left">{{listing.createdAt | date:'MM/dd/yyyy'}}</td>
+                    <td class="text-left" *ngIf="listing.status=='Approved'"><span
+                      class="badge badge-success">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='Rejected'"><span
+                      class="badge badge-danger">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='Expired'"><span
+                      class="badge badge-danger">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='UnderReview'"><span
+                      class="badge badge-info">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='Suspended'"><span
+                      class="badge badge-warning">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='Unpublished'"><span
+                      class="badge badge-dark">{{listing.status}}</span></td>
+                    <td class="text-left" *ngIf="listing.status=='PendingPayment'"><span
+                      class="badge badge-dark">{{listing.status}}</span></td>
+                    <td>
+                      <a target="_blank"  [routerLink]="['/app/listings/listingDetail/' + listing._id]"
+                         class="btn btn-primary btn-sm default pull-right mr-1 "> View Details
+                      </a>
+<!--                      <button type="button" (click)="openStatusModal(statusModel,key)" title="Change Status"-->
+<!--                              class="btn btn-primary btn-sm default pull-right mr-2 mt-2 "><i-->
+<!--                        class="iconsminds-check"></i>-->
+<!--                      </button>-->
+<!--                      <button type="button" (click)="openListingModel(listingModel,listing)" title="Detail view"-->
+<!--                              class="btn btn-primary btn-sm default pull-right mr-2 mt-2 "><i-->
+<!--                        class="simple-icon-eye m-2"></i>-->
+<!--                      </button>-->
+                      <!--                        <button type="button"  (click)="openPropertyDetail(property)" title="Detail view"-->
+                      <!--                                class="btn btn-primary btn-sm default pull-right mr-2 mt-2 "><a target="_blank" [routerLink]="['/app/categories/propertyDetail/' + property._id]" ><i class="simple-icon-eye m-2"></i></a>-->
+                      <!--                        </button>-->
+
+
+                      <!--                        <button type="button" (click)="openNotificationModel(sendNotificationModal,key)"-->
+                      <!--                                class="btn btn-primary btn-sm default pull-right mr-2 mt-2 "> Send Notification-->
+                      <!--                        </button>-->
+                      <!--                        <button type="button" (click)="openNotificationLogs(viewNotificationLog,key)"-->
+                      <!--                                class="btn btn-primary btn-sm default pull-right mr-2 mt-2"> View Notification Logs-->
+                      <!--                        </button>-->
+                    </td>
+                  </tr>
+                  </tbody>
+                  <tfoot *ngIf="listings.length == 0">
+                  <tr>
+                    <td colspan="6">
+                      No records found..
+                    </td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <div class="offset-5 pull-right">
+              <div class=" row">
+                <div class="col-md-7 pull-right">
+                  <pagination class="pagination-sm pull-right" [totalItems]="listings_count" [rotate]="true"
+                              [maxSize]="5" name="pageNo" [(ngModel)]="pageNo" [itemsPerPage]="pageSize"
+                              (pageChanged)="pageChanged($event)"
+                              previousText="<" nextText=">">
+                  </pagination>
+                </div>
+                <div class="col-md-5 pull-right mt-2">
+                  <label class="form-group has-float-label ">
+                    <div class="input-group input-group-sm">
+                      <select class="form-control form-control-sm full-width full-width pull-right" style="width: 100%;"
+                              name="purpose_id" [(ngModel)]="pageSize" required #p_purpose_type="ngModel"
+                              (ngModelChange)="pageSizeChange($event)">
+                        <option value="all">All</option>
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                      </select>
+                    </div>
+                    <span>Page Size</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div bsModal #statusModel="bs-modal" class="modal fade" tabindex="-1"
+     [config]="{backdrop: 'static', ignoreBackdropClick: true}"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name" class="modal-title pull-left">Change Status</h4>
+        <button type="button" class="close pull-right" (click)="clearModel(statusModel, statusForm)"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate class="form" #statusForm="ngForm">
+          <div class="col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-12">
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <textarea rows="4" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="note" [(ngModel)]="selectedListing.note" required #note="ngModel"> </textarea>
+                  </div>
+                  <span>Note<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!note.valid && isSubmitted">This field is required.</div>
+                </label>
+              </div>
+            </div>
+            <div class="row">
+              <div *ngIf="selectedListing.status!='Approved' && selectedListing.status!='PendingPayment'" class="col-md-4">
+
+
+                <app-state-button btnClass="btn btn-success btn-sm mr-2" message="false"
+                                  (click)="statusSubmit(statusModel,statusForm,'Approved')"
+                                  [isDisabled]="buttonDisabled">
+                  Approved
+                </app-state-button>
+
+
+              </div>
+              <div *ngIf="selectedListing.status!='Rejected'" class="col-md-4">
+
+
+                <app-state-button btnClass="btn btn-danger btn-sm mr-2" message="false"
+                                  (click)="statusSubmit(statusModel,statusForm,'Rejected')"
+                                  [isDisabled]="buttonDisabled">
+                  Rejected
+                </app-state-button>
+
+
+              </div>
+              <div *ngIf="selectedListing.status!='Unpublished'" class="col-md-4">
+
+
+                <app-state-button btnClass="btn btn-warning btn-sm mr-2" message="false"
+                                  (click)="statusSubmit(statusModel,statusForm,'Unpublished')"
+                                  [isDisabled]="buttonDisabled">
+                  Unpublished
+                </app-state-button>
+
+
+              </div>
+
+            </div>
+            <!--            <input type="hidden" name="listingId" ngModel="{{selectedListing._id }}">-->
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary btn-sm"
+                (click)="clearModel(statusModel, statusForm)">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div bsModal #listingModel="bs-modal" class="modal fade" tabindex="-1"
+     [config]="{backdrop: 'static', ignoreBackdropClick: true}"
+     role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="dialog-sizes-names" class="modal-title pull-left">Listing Details</h3>
+        <button type="button" class="close pull-right" (click)="clearModel(listingModel, listingForm)"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate class="form" #listingForm="ngForm">
+          <div class="col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class=" form-group row mb-0">
+                  <h5 class="modal-title pull-left mb-2">Vehicle Info</h5>
+                </div>
+                <div class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Name :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.title }}</span>
+                  </div>
+                </div>
+                <div class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Description :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.description }}</span>
+                  </div>
+                </div>
+                <div class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Category :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span *ngFor="let category of selectedListing.category" class="badge badge-warning mr-2 mt-2">{{category.name}}</span></div>
+                </div>
+                <div *ngIf="selectedListing.route && selectedListing.route.length>0" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Route :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <ul *ngFor="let route of selectedListing.route">
+                      <li>{{route.name_en}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div *ngIf="selectedListing.schedule" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Schedule :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="table-responsive mt-3">
+                      <table class="table table-striped">
+                        <thead class="th-b-color">
+                        <tr>
+                          <th scope="col" class="text-left">Start Time</th>
+                          <th scope="col" class="text-left">End Time</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let schedule of selectedListing.schedule; let key = index">
+                          <td class="text-left">{{schedule.startTime}}</td>
+                          <td class="text-left">{{schedule.endTime}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot *ngIf="selectedListing.schedule.length == 0">
+                        <tr>
+                          <td colspan="2">
+                            No records found..
+                          </td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="selectedListing.address" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Address :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.address.apartment_number}},{{ selectedListing.address.city}},{{ selectedListing.address.street}},</span>
+                  </div>
+                </div>
+                <div *ngIf="selectedListing.city" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">City :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.city.name_en }}</span>
+                  </div>
+                </div>
+                <div *ngIf="selectedListing.contactNumber" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Contact Numbers :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <ul *ngFor="let number of selectedListing.contactNumber">
+                      <li>{{number.name}}
+                        <ul>
+                          <li>{{number.contactNumber}}</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+
+
+                <div *ngIf="selectedListing.rental" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Rental :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="table-responsive mt-3">
+                      <table class="table table-striped">
+                        <thead class="th-b-color">
+                        <tr>
+                          <th scope="col" class="text-left">Price</th>
+                          <th scope="col" class="text-left">Unit</th>
+                          <th scope="col" class="text-left">Note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let rental of selectedListing.rental; let key = index">
+                          <td class="text-left">{{rental.price}}</td>
+                          <td class="text-left">{{rental.unit}}</td>
+                          <td class="text-left">{{rental.note}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot *ngIf="selectedListing.rental.length == 0">
+                        <tr>
+                          <td colspan="3">
+                            No records found..
+                          </td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Status :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="text-left" *ngIf="selectedListing.status=='Approved'"><span
+                      class="badge badge-success">{{selectedListing.status}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.status=='Rejected'"><span
+                      class="badge badge-danger">{{selectedListing.status}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.status=='UnderReview'"><span
+                      class="badge badge-info">{{selectedListing.status}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.status=='Suspended'"><span
+                      class="badge badge-warning">{{selectedListing.status}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.status=='Unpublished'"><span
+                      class="badge badge-dark">{{selectedListing.status}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.status=='PendingPayment'"><span
+                      class="badge badge-dark">{{selectedListing.status}}</span></span>
+                  </div>
+                </div>
+
+                <div class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">User Status :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span class="text-left" *ngIf="selectedListing.userStatus=='Active'"><span
+                      class="badge badge-success">{{selectedListing.userStatus}}</span></span>
+                    <span class="text-left" *ngIf="selectedListing.userStatus=='Inactive'"><span
+                      class="badge badge-dark">{{selectedListing.userStatus}}</span></span>
+                  </div>
+                </div>
+                <div *ngIf="selectedListing.imageUrls" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Images :</label>
+                  </div>
+                  <div  class="col-md-6">
+                    <ng-container *ngFor="let image of imagesLightBox; index as i" >
+                      <img src="{{image.thumb}}" (click)="openLightbox(i);" width="50" height="50" class="m-1 cursor-pointer"/>
+                    </ng-container>
+                  </div>
+                </div>
+                <div  class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Created Date :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.createdAt| date:'MM/dd/yyyy'}}</span>
+                  </div>
+                </div>
+                <div  class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Expiry Date :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.expiryDate| date:'MM/dd/yyyy'}}</span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+
+                <div *ngIf="selectedListing.user" class=" form-group row mb-0">
+                  <h5 class="modal-title pull-left">Owner Info</h5>
+                </div>
+
+                <div *ngIf="selectedListing.user" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Name :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.user.userName}}</span>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedListing.user" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Email :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.user.email}}</span>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedListing.user" class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Contact Number :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.user.phoneNumber}}</span>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedListing.user"  class=" form-group row mb-0">
+                  <div class="col-md-6 pr-0 ">
+                    <label class="font-weight-bold">Account Created Date :</label>
+                  </div>
+                  <div class="col-md-6">
+                    <span>{{ selectedListing.user.createdAt| date:'MM/dd/yyyy'}}</span>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedListing.boosts && selectedListing.boosts.length>0" class=" form-group row mb-0 mt-2">
+                  <h5 class="modal-title pull-left">Promotion Info</h5>
+                </div>
+
+                <div *ngIf="selectedListing.boosts && selectedListing.boosts.length>0"  class=" form-group row mb-0">
+                  <div class="col-md-12">
+                    <div class="table-responsive mt-3">
+                      <table class="table table-striped">
+                        <thead class="th-b-color">
+                        <tr>
+                          <th scope="col" class="text-left">Boost Type</th>
+                          <th scope="col" class="text-left">Status</th>
+                          <th scope="col" class="text-left">Total Valid Days</th>
+                          <th scope="col" class="text-left">Started Date</th>
+                          <th scope="col" class="text-left">Expired Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let boost of selectedListing.boosts; let key = index">
+                          <td class="text-left">{{boost.rateCard.type}}</td>
+                          <td class="text-left" *ngIf="boost.status=='OnGoing'"><span
+                            class="badge badge-success">{{boost.status}}</span></td>
+                          <td class="text-left" *ngIf="boost.status=='Expired'"><span
+                            class="badge badge-danger">{{boost.status}}</span></td>
+                          <td class="text-left" *ngIf="boost.status=='Pending'"><span
+                            class="badge badge-warning">{{boost.status}}</span></td>
+                          <td class="text-left">{{boost.totalValidTime}}</td>
+                          <td class="text-left">{{boost.startDate | date:'MM/dd/yyyy'}}</td>
+                          <td class="text-left">{{boost.expiryData | date:'MM/dd/yyyy'}}</td>
+
+                        </tr>
+                        </tbody>
+                        <tfoot *ngIf="selectedListing.boosts.length == 0">
+                        <tr>
+                          <td colspan="5">
+                            No records found..
+                          </td>
+                        </tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="selectedListing.location" class=" form-group row mb-0 mt-2">
+                  <agm-map [zoom]="10" [mapTypeControl]='true' [latitude]="selectedListing.location.coordinates[0]" [longitude]="selectedListing.location.coordinates[1]">
+                    <agm-marker [latitude]="selectedListing.location.coordinates[0]" [longitude]="selectedListing.location.coordinates[1]"  label="{{selectedListing.title}}"  >
+                      <agm-info-window>
+                        <h5>{{selectedListing.title}}</h5>
+                      </agm-info-window>
+                    </agm-marker>
+
+                  </agm-map>
+                </div>
+
+              </div>
+
+            </div>
+            <!--            <input  type="hidden" name="listingId" ngModel="{{selectedListing._id }}">-->
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary btn-sm"
+                (click)="clearModel(listingModel, listingForm)">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

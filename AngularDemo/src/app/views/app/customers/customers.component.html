@@ -1,0 +1,226 @@
+<div class="row ">
+  <div class="col-12 col-md-12">
+    <app-heading></app-heading>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="separator mb-5"></div>
+  </div>
+</div>
+<simple-notifications></simple-notifications>
+<ngx-spinner></ngx-spinner>
+<div class="row">
+  <div class="col-lg-12 col-md-12 mb-4">
+    <div class="card">
+      <form class="form" novalidate>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-7">
+                  <label class="form-group has-float-label">
+                    <div class="position-relative has-icon-left">
+                      <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-sm"
+                          name="search_value" [(ngModel)]="searchValue">
+                        <div class="input-group-append">
+                          <button class="btn btn-primary default" type="submit" (click)="searchTable()"><i
+                              class=" glyph-icon simple-icon-magnifier text-white mt-2 pt-2"></i></button>
+                          <button class="btn  btn-light btn-sm" (click)="clear()">Clear</button>
+                        </div>
+                      </div>
+                    </div>
+                    <span>Search Customer</span>
+                  </label>
+                </div>
+                <div class="col-md-3  doNotPrint">
+                  <div class="row pull-right">
+                    <div class="form-group  pull-right mr-2">
+                      <button type="button" (click)="openCustomerModel(customerModal)"
+                        class="btn btn-primary btn-sm default pull-right"> Add Customer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2 float-right">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="table-responsive mt-3">
+                <table class="table table-striped">
+                  <thead class="th-b-color">
+                    <tr>
+                      <th scope="col" class="text-left">Customer Name</th>
+                      <th scope="col" class="text-left">Description</th>
+                      <th scope="col" class="text-left">Address</th>
+                      <th scope="col" class="text-left">City</th>
+                      <th scope="col" class="text-left">Contact Number</th>
+                      <th scope="col" class="text-left">Created Date</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let customer of customers; let key = index">
+                      <td class="text-left">{{customer.customerName}}</td>
+                      <td class="text-left">{{customer.description}}</td>
+                      <td class="text-left">{{customer.address}}</td>
+                      <td class="text-left">{{customer.city}}</td>
+                      <td class="text-left">{{customer.contactNumber}}</td>
+                      <td class="text-left">{{customer.createdAt | date:'MM/dd/yyyy'}}</td>
+                      <td>
+                        <button type="button" (click)="openEditCustomerModel(customerModal,key)"
+                          class="btn btn-primary btn-sm default pull-right mr-2  "> <i
+                            class="iconsminds-repair  cursor-pointer "></i>
+                        </button>
+                        <button type="button" (click)="deleteCustomer(key,customer._id)"
+                          class="btn btn-primary btn-sm default  mr-2  "> <i
+                            class="simple-icon-trash cursor-pointer "></i>
+                        </button>
+                        <!-- <a target="_blank"  [routerLink]="['/app/customers/customerDetail/'+customer._id]"
+                         class="btn btn-primary btn-sm default  mr-1 "> View Details
+                      </a> -->
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot *ngIf="customers.length == 0">
+                    <tr>
+                      <td colspan="7">
+                        No records found..
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <div class="offset-5 pull-right">
+              <div class=" row">
+                <div class="col-md-7 pull-right">
+                  <pagination class="pagination-sm pull-right" [totalItems]="customersCount" [rotate]="true"
+                    [maxSize]="5" name="pageNo" [(ngModel)]="pageNo" [itemsPerPage]="pageSize"
+                    (pageChanged)="pageChanged($event)" previousText="<" nextText=">">
+                  </pagination>
+                </div>
+                <div class="col-md-5 pull-right mt-2">
+                  <label class="form-group has-float-label ">
+                    <div class="input-group input-group-sm">
+                      <select class="form-control form-control-sm full-width full-width pull-right" style="width: 100%;"
+                        name="purpose_id" [(ngModel)]="pageSize" required #p_purpose_type="ngModel"
+                        (ngModelChange)="pageSizeChange($event)">
+                        <option value="all">All</option>
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                      </select>
+                    </div>
+                    <span>Page Size</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div bsModal #customerModal="bs-modal" class="modal fade" tabindex="-1"
+  [config]="{backdrop: 'static', ignoreBackdropClick: true}" role="dialog" aria-labelledby="dialog-sizes-name1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-sizes-name1" *ngIf="!isEdit" class="modal-title pull-left">Add Customer</h4>
+        <h4 id="dialog-sizes-name" *ngIf="isEdit" class="modal-title pull-left">Edit Customer</h4>
+        <button type="button" class="close pull-right" (click)="clearModel(customerModal, customerForm)"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form novalidate class="form" #customerForm="ngForm">
+          <div class="col-md-12 col-sm-12">
+            <div class="row">
+              <div class="col-md-6">
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      required name="customerName" [(ngModel)]="selectedCustomer.customerName" #customerName="ngModel">
+                  </div>
+                  <span>Customer Name<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!customerName.valid && isSubmitted">This field is
+                    required.
+                  </div>
+                </label>
+
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <textarea class="form-control" rows="6" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                      name="description" [(ngModel)]="selectedCustomer.description" required #desc="ngModel">
+                    </textarea>
+                  </div>
+                  <span>Description<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!desc.valid && isSubmitted">This field is
+                    required.
+                  </div>
+                </label>
+              </div>
+              <div class="col-md-6">
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm" required name="address"
+                      [(ngModel)]="selectedCustomer.address" #address="ngModel">
+                  </div>
+                  <span>Address<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!address.valid && isSubmitted">This field is
+                    required.
+                  </div>
+                </label>
+
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm" required name="city"
+                      [(ngModel)]="selectedCustomer.city" #city="ngModel">
+                  </div>
+                  <span>City<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!city.valid && isSubmitted">This field is
+                    required.
+                  </div>
+                </label>
+
+                <label class="form-group has-float-label">
+                  <div class="input-group input-group-sm">
+                    <input type="number" class="form-control" aria-label="Small"
+                      aria-describedby="inputGroup-sizing-sm" required name="contactNumber"
+                      [(ngModel)]="selectedCustomer.contactNumber" #contactNumber="ngModel">
+                  </div>
+                  <span>Contact Number<span class="text-danger">*</span></span>
+                  <div class="invalid-tooltip" *ngIf="!contactNumber.valid && isSubmitted">This field is
+                    required.
+                  </div>
+                </label>
+              </div>
+            </div>
+            <input *ngIf="isEdit" type="hidden" name="id" ngModel="{{selectedCustomer._id }}">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <app-state-button *ngIf="!isEdit" btnClass="btn btn-primary btn-sm" [currentState]="responseWaiting"
+          message="false" (click)="addCustomerSubmit(customerModal,customerForm)" [isDisabled]="buttonDisabled">
+          Add Customer
+        </app-state-button>
+        <app-state-button *ngIf="isEdit" btnClass="btn btn-primary btn-sm" [currentState]="responseWaiting"
+          message="false" (click)="addCustomerSubmit(customerModal,customerForm)" [isDisabled]="buttonDisabled">
+          Edit Customer
+        </app-state-button>
+        <button type="button" class="btn btn-outline-primary btn-sm"
+          (click)="clearModel(customerModal, customerForm)">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
