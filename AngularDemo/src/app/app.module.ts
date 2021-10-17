@@ -19,9 +19,7 @@ import { LayoutContainersModule } from './containers/layout/layout.containers.mo
     LayoutContainersModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot(),
-    HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebase)
-  ],
+    HttpClientModule ],
   declarations: [
     AppComponent
   ],

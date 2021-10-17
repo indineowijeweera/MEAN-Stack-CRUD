@@ -23,14 +23,14 @@ export class RegisterComponent {
       this.buttonDisabled = true;
       this.buttonState = 'show-spinner';
 
-      this.authService.register(this.registerForm.value).then((user) => {
-        this.router.navigate([environment.adminRoot]);
-      }).catch((error) => {
-        this.notifications.create('Error', error.message, NotificationType.Bare,
-          { theClass: 'outline primary', timeOut: 6000, showProgressBar: false });
-        this.buttonDisabled = false;
-        this.buttonState = '';
-      });
+      // this.authService.register(this.registerForm.value).then((user) => {
+      //   this.router.navigate([environment.adminRoot]);
+      // }).catch((error) => {
+      //   this.notifications.create('Error', error.message, NotificationType.Bare,
+      //     { theClass: 'outline primary', timeOut: 6000, showProgressBar: false });
+      //   this.buttonDisabled = false;
+      //   this.buttonState = '';
+      // });
     }
   }
 }

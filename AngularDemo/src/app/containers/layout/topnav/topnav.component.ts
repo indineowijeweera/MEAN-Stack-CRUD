@@ -70,22 +70,24 @@ export class TopnavComponent implements OnInit, OnDestroy {
     this.langService.language = lang.code;
     this.currentLanguage = this.langService.languageShorthand;
   }
+  ngOnInit(){
 
-  async ngOnInit(): Promise<void> {
-    if (await this.authService.getUser()) {
-      this.displayName = await this.authService.getUser().then((user) => {
-        return user.displayName;
-      });
-    }
-    this.subscription = this.sidebarService.getSidebar().subscribe(
-      (res) => {
-        this.sidebar = res;
-      },
-      (err) => {
-        console.error(`An error occurred: ${err.message}`);
-      }
-    );
   }
+  // async ngOnInit(): Promise<void> {
+  //   if (await this.authService.getUser()) {
+  //     this.displayName = await this.authService.getUser().then((user) => {
+  //       return user.displayName;
+  //     });
+  //   }
+  //   this.subscription = this.sidebarService.getSidebar().subscribe(
+  //     (res) => {
+  //       this.sidebar = res;
+  //     },
+  //     (err) => {
+  //       console.error(`An error occurred: ${err.message}`);
+  //     }
+  //   );
+  // }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
